@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->id();
+            $table->foreign('produk_id')->constrained()->onDelete('cascade');
+            $table->foreign('transaksi_produk_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('harga');
             $table->timestamps();
         });
     }

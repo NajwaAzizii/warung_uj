@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_produk');
+            $table->string('slug');
+            $table->string('foto');
+            $table->unsignedBigInteger('harga'); //yaitu angkanya tidak boleh negatif
+            $table->foreign('kategori_id')->constrained()->onDelete('cascade'); //tidak perlu references jika nama kolom id nya sama degan nama tabelnya
             $table->timestamps();
         });
     }

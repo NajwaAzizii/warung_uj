@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('transaksi_produks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('harga_total');
+            $table->boolean('status_pembayaran');
+            $table->string('alamat');
+            $table->string('nomor_hp');
+            $table->text('catatan');
+            $table->string('bukti_pembayaran');
+            $table->foreign('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('keranjangs', function (Blueprint $table) {
             $table->id();
+            $table->foreign('user_id')->constrained()->onDelete('cascade'); //tidak perlu references jika nama kolom id nya sama degan nama tabelnya
+            $table->foreign('produk_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

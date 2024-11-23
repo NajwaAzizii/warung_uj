@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('foto');
             $table->unsignedBigInteger('harga'); //yaitu angkanya tidak boleh negatif
-            $table->foreign('kategori_id')->constrained()->onDelete('cascade'); //tidak perlu references jika nama kolom id nya sama degan nama tabelnya
+            $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade');
             $table->timestamps();
         });
     }

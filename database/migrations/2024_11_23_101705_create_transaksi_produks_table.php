@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nomor_hp');
             $table->text('catatan');
             $table->string('bukti_pembayaran');
-            $table->foreign('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

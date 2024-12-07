@@ -9,4 +9,7 @@ class transaksi_produk extends Model
 {
     /** @use HasFactory<\Database\Factories\TransaksiProdukFactory> */
     use HasFactory;
+    protected $guarded = [
+        'id',
+    ];
 }

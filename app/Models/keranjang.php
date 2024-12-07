@@ -9,4 +9,8 @@ class keranjang extends Model
 {
     /** @use HasFactory<\Database\Factories\KeranjangFactory> */
     use HasFactory;
+
+    protected $guarded = [
+        'id',
+    ];
 }

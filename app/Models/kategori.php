@@ -9,4 +9,9 @@ class kategori extends Model
 {
     /** @use HasFactory<\Database\Factories\KategoriFactory> */
     use HasFactory;
+
+    //mengizinkan memasukkan seluruh data selain id kalau fillable keterbalikannya
+    protected $guarded = [
+        'id',
+    ];
 }

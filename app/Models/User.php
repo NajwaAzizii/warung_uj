@@ -47,4 +47,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //1 user memiliki banya item di entiti keranjang
+    public function keranjangs()
+    {
+        return $this->hasMany(keranjang::class);
+    }
+
+    //1 user memiliki 1 atau leih data transaksi
+    public function transaksi_produks()
+    {
+        return $this->hasMany(transaksi_produk::class);
+    }
 }

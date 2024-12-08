@@ -5,8 +5,7 @@
                 {{ __('Mengelola produk') }}
             </h2>
             <a href="{{ route('admin.produk.create') }}"
-                class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Tambah
-                produk</a>
+                class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Tambah produk</a>
         </div>
     </x-slot>
 
@@ -16,20 +15,20 @@
 
                 @forelse ($produks as $produk)
                     <div class="item-card flex flex-row justify-between items-center">
-                        <div class="flex flex-row item-center gap-x-3">
+                        <div class="flex flex-row items-center gap-x-3">
                             <img src="{{ Storage::url($produk->foto) }}" alt="" class="w-[50px] h-[50px]">
                             <div>
-                                <h3 class="text-xl font-bold text-indigo-950 items-center">
+                                <h3 class="text-xl font-bold text-indigo-950">
                                     {{ $produk->nama_produk }}
                                 </h3>
                                 <p class="text-base text-slate-500">
                                     Rp {{ $produk->harga }}
                                 </p>
                             </div>
-                            <p class="text-base text-slate-500">
-                                {{ $produk->kategori->nama }}
-                            </p>
                         </div>
+                        <p class="text-base text-slate-500 mx-4">
+                            {{ $produk->kategori->nama }}
+                        </p>
                         <div class="flex flex-row items-center gap-x-3">
                             <a href="{{ route('admin.produk.edit', $produk) }}"
                                 class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Edit</a>
@@ -39,10 +38,9 @@
                                 <button class="font-bold py-3 px-5 rounded-full text-white bg-red-700">
                                     Delete
                                 </button>
-
+                            </form>
                         </div>
                     </div>
-
                 @empty
                     <p>
                         Belum ada Produk ditambahkan oleh pemilik warung

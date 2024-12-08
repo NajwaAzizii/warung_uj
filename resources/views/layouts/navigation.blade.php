@@ -17,14 +17,22 @@
                     </x-nav-link>
                 </div>
 
+                @role('pemilik')
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.produk.index')" :active="request()->routeIs('admin.produk.index')">
+                            {{ __('Mengelola produk') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.kategori.index')" :active="request()->routeIs('admin.kategori.index')">
+                            {{ __('Mengelola kategori') }}
+                        </x-nav-link>
+                    </div>
+                @endrole
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.produk.index')" :active="request()->routeIs('admin.produk.index')">
-                        {{ __('Mengelola produk') }}
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.kategori.index')" :active="request()->routeIs('admin.kategori.index')">
-                        {{ __('Mengelola kategori') }}
+                    <x-nav-link :href="route('transaksi_produk.index')" :active="request()->routeIs('transaksi_produk.index,index')">
+                        {{-- jika role nya pemilik dia pesanan warung jika pembeli Transaksi saya --}}
+                        {{ Auth::user()->hasRole('pemilik') ? __('Pesanan Warung Uj') : __('Transaksi Saya') }}
                     </x-nav-link>
                 </div>
             </div>

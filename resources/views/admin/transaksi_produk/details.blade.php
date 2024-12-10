@@ -3,7 +3,6 @@
     <x-slot name="header">
         <div class="flex flex-row w-full justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-
                 {{ __('Detail') }}
             </h2>
         </div>
@@ -12,7 +11,6 @@
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white flex flex-col gap-y-5 overflow-hidden p-10 shadow-sm sm:rounded-lg">
-
                 <div class="item-card flex flex-row justify-between items-center">
                     <div class="flex flex-row items-center gap-x-3">
                         <div>
@@ -22,7 +20,6 @@
                             <h3 class="text-xl font-bold text-indigo-950">
                                 Rp {{ $transaksi_produk->harga_total }}
                             </h3>
-
                         </div>
                     </div>
                     <div>
@@ -56,7 +53,7 @@
                             <div class="item-card flex flex-row justify-between items-center">
                                 <div class="flex flex-row items-center gap-x-3">
                                     <img src="{{ Storage::url($detail->produk->foto) }}" alt=""
-                                        class="w-12 h-12 rounded-full object-cover">
+                                        class="w-[50px] h-[50px]">
                                     <div>
                                         <h3 class="text-xl font-bold text-indigo-950">
                                             {{ $detail->produk->nama_produk }}
@@ -69,83 +66,84 @@
                                 <p class="text-base text-slate-500 mx-4">
                                     {{ $detail->produk->kategori->nama }}
                                 </p>
-                            @empty
+                            </div>
+                        @empty
                         @endforelse
-                    </div>
 
 
 
 
-                    <h3 class="text-xl font-bold text-indigo-950">
-                        Detail Pembayaran
-                    </h3>
-
-                    <div class="item-card flex flex-row justify-between items-center">
-                        <p class="text-base text-slate-500">
-                            Alamat
-                        </p>
 
                         <h3 class="text-xl font-bold text-indigo-950">
-                            {{ $transaksi_produk->alamat }}
+                            Detail Pembayaran
                         </h3>
 
-                    </div>
-                    <div class="item-card flex flex-row justify-between items-center">
-                        <p class="text-base text-slate-500">
-                            Nomor Hp
-                        </p>
+                        <div class="item-card flex flex-row justify-between items-center">
+                            <p class="text-base text-slate-500">
+                                Alamat
+                            </p>
 
+                            <h3 class="text-xl font-bold text-indigo-950">
+                                {{ $transaksi_produk->alamat }}
+                            </h3>
+
+                        </div>
+                        <div class="item-card flex flex-row justify-between items-center">
+                            <p class="text-base text-slate-500">
+                                Nomor Hp
+                            </p>
+
+                            <h3 class="text-xl font-bold text-indigo-950">
+                                {{ $transaksi_produk->nomor_hp }}
+                            </h3>
+
+                        </div>
+                        <div class="item-card flex flex-col items-start">
+                            <p class="text-base text-slate-500">
+                                Catatan
+                            </p>
+
+                            <h3 class="text-lg font-bold text-indigo-950">
+                                {{ $transaksi_produk->catatan }}
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="flex flex-col gap-y-5 col-span-2 items-end">
                         <h3 class="text-xl font-bold text-indigo-950">
-                            {{ $transaksi_produk->nomor_hp }}
+                            Bukti Pembayaran :
                         </h3>
-
+                        <img src="{{ Storage::url($transaksi_produk->bukti_pembayaran) }}"
+                            alt="{{ Storage::url($transaksi_produk->bukti_pembayaran) }}" class="w-[300px]h-[400px]">
                     </div>
-                    <div class="item-card flex flex-col items-start">
-                        <p class="text-base text-slate-500">
-                            Catatan
-                        </p>
-
-                        <h3 class="text-lg font-bold text-indigo-950">
-                            {{ $transaksi_produk->catatan }}
-                        </h3>
-
-                    </div>
-
-
                 </div>
+                <hr class="my-3">
 
-                <div class="flex flex-col gap-y-5 col-span-2 items-end">
-                    <h3 class="text-xl font-bold text-indigo-950">
-                        Bukti Pembayaran :
-                    </h3>
-                    <img src="{{ Storage::url($transaksi_produk->bukti_pembayaran) }}"
-                        alt="{{ Storage::url($transaksi_produk->bukti_pembayaran) }}" class="w-[300px]h-[400px]">
-                </div>
-            </div>
-            <hr class="my-3">
-
-            @role('pemilik')
-                @if ($transaksi_produk->status_pembayaran)
-                    <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
-                        WhatsApp Customer
-                    </button>
-                @else
-                    <form method="POST" action="{{ route('transaksi_produk.update', $transaksi_produk) }}">
-                        @csrf
-                        @method('PUT')
-                        <button class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
-                            Menyetujui Pesanan
+                @role('pemilik')
+                    @if ($transaksi_produk->status_pembayaran)
+                        <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
+                            WhatsApp Customer
                         </button>
-                    </form>
-                @endif
-            @endrole
+                    @else
+                        <form method="POST" action="{{ route('transaksi_produk.update', $transaksi_produk) }}">
+                            @csrf
+                            @method('PUT')
+                            <button class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
+                                Menyetujui Pesanan
+                            </button>
+                        </form>
+                    @endif
+                @endrole
 
-            @role('pembeli')
-                <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
-                    Hubungi Admin
-                </button>
-            @endrole
+                @role('pembeli')
+                    <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
+                        Hubungi Admin
+                    </button>
+                @endrole
+            </div>
         </div>
-    </div>
     </div>
 </x-app-layout>

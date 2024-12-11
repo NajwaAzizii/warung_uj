@@ -1,21 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit Produk') }}
-        </h2>
-    </x-slot>
-
+@extends('layouts.app')
+@section('content')
+<div style="background-image: url(/pembeli/assets/images/menu-bg.png);">
+    <br><br> <br><br>
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight bg-indigo-100 p-3 rounded">
+                {{ __('Edit Produk') }}
+            </h2>
+
             <div class="bg-white  overflow-hidden p-10 shadow-sm sm:rounded-lg">
 
                 {{-- @if ($errors->any())
                 @foreach ($errors->all() as $error)
-                    <div class="py-3 w-full rounded-3xl bg-red-500 text-white">
-                        {{ $error }}
-                    </div>
+                <div class="py-3 w-full rounded-3xl bg-red-500 text-white">
+                    {{ $error }}
+                </div>
                 @endforeach
-            @endif --}}
+                @endif --}}
 
                 <form method="POST" action="{{ route('admin.produk.update', $produk) }}" enctype="multipart/form-data">
                     @csrf
@@ -44,7 +45,7 @@
                             class="py-3 rounded-lg pl-3 w-full border border-slate-300">
                             <option value="{{ $produk->kategori->id }}">{{ $produk->kategori->nama }}</option>
                             @forelse ($kategoris as $kategori)
-                                <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                            <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
                             @empty
                             @endforelse
                         </select>
@@ -72,4 +73,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>

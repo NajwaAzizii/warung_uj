@@ -1,21 +1,22 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Edit Kategori') }}
-        </h2>
-    </x-slot>
-
+@extends('layouts.app')
+@section('content')
+<div style="background-image: url(/pembeli/assets/images/menu-bg.png);">
+    <br><br> <br><br>
     <div class="py-12">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight bg-indigo-100 p-3 rounded">
+                {{ __('Edit Kategori') }}
+            </h2>
             <div class="bg-white  overflow-hidden p-10 shadow-sm sm:rounded-lg">
 
+
                 {{-- @if ($errors->any())
-                  @foreach ($errors->all() as $error)
-                      <div class="py-3 w-full rounded-3xl bg-red-500 text-white">
-                          {{ $error }}
-                      </div>
-                  @endforeach
-              @endif --}}
+                @foreach ($errors->all() as $error)
+                <div class="py-3 w-full rounded-3xl bg-red-500 text-white">
+                    {{ $error }}
+                </div>
+                @endforeach
+                @endif --}}
 
                 <form method="POST" action="{{ route('admin.kategori.update', $kategori) }}"
                     enctype="multipart/form-data">
@@ -51,4 +52,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>

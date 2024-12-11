@@ -40,7 +40,6 @@
                             <p class="text-white font-bold text-sm">PENDING</p>
                         </span>
                     @endif
-
                 </div>
                 <hr class="my-3">
 
@@ -69,11 +68,6 @@
                             </div>
                         @empty
                         @endforelse
-
-
-
-
-
                         <h3 class="text-xl font-bold text-indigo-950">
                             Detail Pembayaran
                         </h3>

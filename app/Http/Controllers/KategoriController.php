@@ -16,10 +16,11 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $kategoris = kategori::all();
-        return view('admin.kategori.index', [
-            'kategoris' => $kategoris
-        ]);
+        return view('pembeli.index');
+        // $kategoris = kategori::all();
+        // return view('admin.kategori.index', [
+        //     'kategoris' => $kategoris
+        // ]);
     }
 
     /**

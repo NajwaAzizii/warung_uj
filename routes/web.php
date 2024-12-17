@@ -1,14 +1,24 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaksiProdukController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//halaman utama
+Route::get('/', [PembeliController::class, 'index'])->name('pembeli.index');
+
+//pencarian
+Route::get('/search', [PembeliController::class, 'search'])->name('pembeli.search');
+
+//detail produk
+Route::get('/details/{produk:slug}', [PembeliController::class, 'details'])->name('pembeli.produk.details');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

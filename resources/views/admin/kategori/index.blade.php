@@ -24,15 +24,20 @@
                     </h3>
                     <div class="flex flex-row items-center gap-x-3">
                         <a href="{{ route('admin.kategori.edit', $kategori) }}"
-                            class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Edit</a>
-                        <form method="POST" action="{{ route('admin.kategori.destroy', $kategori) }}">
+                            class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700"
+                            style="margin: 0; width: 100px; display: flex; align-items: center; justify-content: center;">Edit</a>
+                        <form method="POST" action="{{ route('admin.kategori.destroy', $kategori) }}"
+                            style="margin: 0;">
+                            <!-- Menghapus margin pada form -->
                             @csrf
                             @method('DELETE')
-                            <button class="font-bold py-3 px-5 rounded-full text-white bg-red-700">
+                            <button class="font-bold py-3 px-5 rounded-full text-white bg-red-700"
+                                style="margin: 0; width: 100px; display: flex; align-items: center; justify-content: center;">
                                 Delete
                             </button>
-
+                        </form>
                     </div>
+
                 </div>
 
                 @empty

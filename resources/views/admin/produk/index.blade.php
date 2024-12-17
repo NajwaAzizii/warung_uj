@@ -28,13 +28,15 @@
                     <p class="text-base text-slate-500 mx-4">{{ $produk->kategori->nama }}</p>
                     <div class="flex flex-row items-center gap-x-3">
                         <a href="{{ route('admin.produk.edit', $produk) }}"
-                            class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Edit</a>
-                        <form method="POST" action="{{ route('admin.produk.destroy', $produk) }}">
-                            @csrf
+                            style="margin: 0; padding: 0.5rem 1rem; border-radius: 9999px; background-color: #4F46E5; color: white; font-weight: bold; width: 100px; display: flex; align-items: center; justify-content: center;">Edit</a>
+                        <form method="POST" action="{{ route('admin.produk.destroy', $produk) }}" style="margin: 0;">
+
                             @method('DELETE')
-                            <button class="font-bold py-3 px-5 rounded-full text-white bg-red-700">Delete</button>
+                            <button
+                                style="margin: 0; padding: 0.5rem 1rem; border-radius: 9999px; background-color: #e3342f; color: white; font-weight: bold; width: 100px; display: flex; align-items: center; justify-content: center;">Delete</button>
                         </form>
                     </div>
+
                 </div>
                 @empty
                 <p>Belum ada Produk ditambahkan oleh pemilik warung</p>

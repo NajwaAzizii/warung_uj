@@ -14,7 +14,6 @@
 </head>
 
 <body class="body-fixed">
-    <!-- start of header  -->
     <header class="site-header">
         <div class="container">
             <div class="row">
@@ -96,6 +95,38 @@
     </header>
     <!-- header ends  -->
 
+    {{-- @role('pembeli')
+    <div class="col-lg-10">
+        <div class="main-navigation">
+            <button class="menu-toggle"><span></span><span></span></button>
+            <nav class="header-menu">
+                <ul class="menu food-nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <form action="#" class="header-search-form for-des">
+                    <input type="search" class="form-input" placeholder="Search Here...">
+                    <button type="submit">
+                        <i class="uil uil-search"></i>
+                    </button>
+                </form>
+                <a href="javascript:void(0)" class="header-btn header-cart">
+                    <i class="uil uil-shopping-bag"></i>
+                    <span class="cart-number">3</span>
+                </a>
+                <a href="javascript:void(0)" class="header-btn">
+                    <i class="uil uil-user-md"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    @endrole --}}
     <main class="content">
         @yield('content')
     </main>

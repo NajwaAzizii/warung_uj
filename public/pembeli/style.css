@@ -8,16 +8,6 @@ body {
     background: #f3f3f5;
 }
 
-.py-12 {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-.py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
-
 .body-fixed {
     position: fixed;
     width: 100%;
@@ -25,6 +15,7 @@ body {
     top: auto;
     left: auto;
 }
+
 
 body,
 html {
@@ -45,7 +36,6 @@ img {
     width: 100%;
     z-index: 99;
     transition: 0.5s;
-    background: white;
     border-bottom: 1px solid transparent;
 }
 
@@ -54,9 +44,6 @@ img {
     padding: 20px 0;
     border-color: #f2f2f2;
     backdrop-filter: blur(20px);
-}
-main {
-    margin-top: 100px; /* Adjust this value based on your header height */
 }
 
 .main-navigation {
@@ -464,7 +451,7 @@ ul {
 }
 
 .main-banner {
-    padding: 200px 0 300px;
+    padding: 200px;
     min-height: 100vh;
     position: relative;
 }
@@ -573,29 +560,8 @@ h4,
 h5,
 h6 {
     color: #0d0d25;
-    /* font-family: "Playfair Display", serif; */
+    font-family: "Poppins", serif;
     font-weight: 900;
-}
-
-.bg-white {
-    background-color: #ffffff; /* Ensure the card background is white */
-}
-
-.shadow-md {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
-}
-
-.rounded-lg {
-    border-radius: 0.5rem; /* Rounded corners for cards */
-}
-
-.border-b {
-    border-bottom: 1px solid #e5e7eb; /* Light gray border for separation */
-}
-
-.py-4 {
-    padding-top: 1rem; /* Adjust padding for product items */
-    padding-bottom: 1rem; /* Adjust padding for product items */
 }
 
 p {
@@ -631,12 +597,43 @@ p {
     color: #0d0d25;
 }
 
-.section {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    position: relative;
+/* ******************** */
+
+.brands-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -15px;
 }
 
+.brands-box {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brands-box:hover {
+    filter: brightness(0.3);
+    opacity: 0.9;
+}
+
+.brand-title .h5-title {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 2px;
+    opacity: 0.7;
+}
+
+/* ******************** */
+
+.section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+}
+.text-black {
+    color: black;
+}
 .sec-sub-title {
     text-transform: uppercase;
     display: inline-block;
@@ -835,7 +832,7 @@ p {
 .dish-title .h3-title {
     text-transform: capitalize;
     margin-bottom: 5px;
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", serif;
     font-weight: bold;
     color: #0d0d25;
     transition: 0.3s;
@@ -1158,7 +1155,6 @@ p {
     color: #ffffff !important;
 }
 
-/* *************** */
 
 .faq-row {
     column-count: 3;
@@ -1188,6 +1184,53 @@ p {
 }
 
 /* *************** */
+
+.blog-text .h4-title {
+    text-transform: capitalize;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 900;
+    font-family: "Poppins";
+    color: #0d0d25;
+    transition: 0.3s;
+}
+
+.blog-text .h4-title:hover {
+    color: #ff8243;
+}
+
+.blog-date {
+    padding: 5px 15px;
+    background: #f8f9fa;
+    box-shadow: inset 5px 5px 10px #e2e2e2, inset -5px -5px 10px #e8e8e8;
+    display: inline-block;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.blog-img {
+    width: 100%;
+    height: 280px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.blog-box {
+    padding: 30px 25px;
+    border-radius: 30px;
+    background: linear-gradient(145deg, #ececec, #fdfdfd);
+    box-shadow: 30px 30px 50px #dcdcdc, -30px -30px 50px #ffffff;
+    transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+    margin-bottom: 30px;
+}
+
+.blog-box:hover {
+    transform: scale(1.03);
+}
 
 /* ************************ */
 
@@ -1590,6 +1633,9 @@ p {
         position: relative;
         display: flex;
     }
+}
+.custom-delete-button {
+    margin: 0; /* Menghapus margin */
 }
 
 @media (max-width: 767px) {

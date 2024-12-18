@@ -544,8 +544,8 @@ ul {
 }
 
 .h1-title {
-    font-size: 90px;
-    line-height: 108px;
+    font-size: 50px;
+    line-height: 100px;
     text-transform: capitalize;
     margin-bottom: 25px;
     font-weight: 900;
@@ -763,7 +763,9 @@ p {
     box-shadow: 28px 28px 55px #d4d4d4, -28px -28px 55px #ffffff;
     position: relative;
     z-index: 2;
+    justify-content: center; /* Memusatkan item */
 }
+
 
 .menu-tab ul li,
 .menu-tab ul .filter-active {
@@ -782,7 +784,7 @@ p {
 .filter-active {
     position: absolute;
     left: 0;
-    top: 12px;
+    top: 7px;
     min-height: 50px;
     z-index: -1;
 }

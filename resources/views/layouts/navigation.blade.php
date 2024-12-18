@@ -142,15 +142,18 @@
                             <div class="footer-info">
                                 <div class="footer-logo">
                                     <a href="index.html">
-                                        <img src="logo.png" alt="">
+                                        <img src="/pembeli/logo.png" width="85" height="30" alt="Logo">
                                     </a>
                                 </div>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, tenetur.</p>
+                                <p>Selamat datang di Warung Uj!</p>
+                                <p>Nikmati berbagai pilihan makanan ayam dan ikan yang segar dan lezat. Kami berkomitmen
+                                    untuk memberikan pengalaman kuliner terbaik bagi Anda.</p>
                                 <div class="social-icon">
                                     <ul>
                                         <li><a href="#"><i class="uil uil-facebook-f"></i></a></li>
                                         <li><a href="#"><i class="uil uil-instagram"></i></a></li>
-                                        <li><a href="#"><i class="uil uil-github-alt"></i></a></li>
+                                        <li><a href="https://wa.me/6282392015547" target="_blank"><i
+                                                    class="uil uil-whatsapp"></i></a></li>
                                         <li><a href="#"><i class="uil uil-youtube"></i></a></li>
                                     </ul>
                                 </div>
@@ -161,26 +164,26 @@
                                 <div class="footer-table-info">
                                     <h3 class="h3-title">open hours</h3>
                                     <ul>
-                                        <li><i class="uil uil-clock"></i> Mon-Thurs : 9am - 22pm</li>
-                                        <li><i class="uil uil-clock"></i> Fri-Sun : 11am - 22pm</li>
+                                        <li><i class="uil uil-clock"></i> Setiap Hari : 08.00 - 22.00
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="footer-menu food-nav-menu">
                                     <h3 class="h3-title">Links</h3>
                                     <ul class="column-2">
-                                        <li><a href="#home" class="footer-active-menu">Home</a></li>
-                                        <li><a href="#about">About</a></li>
+                                        <li><a href="#home" class="footer-active-menu">Beranda</a></li>
+                                        <li><a href="#about">Tantang Kita</a></li>
                                         <li><a href="#menu">Menu</a></li>
-                                        <li><a href="#gallery">Gallery</a></li>
-                                        <li><a href="#contact">Contact</a></li>
+                                        <li><a href="#gallery">Galeri</a></li>
+                                        <li><a href="#contact">Kontak</a></li>
                                     </ul>
                                 </div>
                                 <div class="footer-menu">
-                                    <h3 class="h3-title">Company</h3>
+                                    <h3 class="h3-title">Lokasi</h3>
                                     <ul>
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Cookie Policy</a></li>
+                                        <p>Jl. Batin Muajo Lelo </p>
+                                        <p>(Depan kantor camat Baru Pinggir)</p>
                                     </ul>
                                 </div>
                             </div>

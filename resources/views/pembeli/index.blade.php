@@ -17,21 +17,22 @@
                         <div class="col-lg-6">
                             <div class="banner-text">
                                 <h1 class="h1-title">
-                                    Welcome to our
-                                    <span>India</span>
-                                    restaurant.
+                                    Selamat Datang Di
+                                    <span>Warung Uj.</span>
+
                                 </h1>
-                                <p>This is Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam eius
-                                    vel tempore consectetur nesciunt? Nam eius tenetur recusandae optio aperiam.</p>
+                                <p>Rasakan cita rasa autentik dari setiap hidangan yang kami sajikan,
+                                    dibuat dengan bahan berkualitas dan penuh cinta. Temukan menu spesial
+                                    kami yang siap memanjakan lidah Anda setiap hari!.</p>
                                 <div class="banner-btn mt-4">
-                                    <a href="#menu" class="sec-btn">Check our Menu</a>
+                                    <a href="#menu" class="sec-btn">Cek Menu Kita</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="banner-img-wp">
                                 <div class="banner-img"
-                                    style="background-image: url(/pembeli/assets/images/main-b.jpg);">
+                                    style="background-image: url(/pembeli/logo.png); width: 600px; height: 500px; background-size: contain; background-repeat: no-repeat;">
                                 </div>
                             </div>
 
@@ -46,16 +47,18 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="sec-title text-center mb-5">
-                            <p class="sec-sub-title mb-3">About Us</p>
-                            <h2 class="h2-title">Discover our <span>restaurant story</span></h2>
+                            <p class="sec-sub-title mb-3">Tentang Kita</p>
+                            <h2 class="h2-title">Cerita di Balik <span>Warung Uj</span></h2>
                             <div class="sec-title-shape mb-4">
                                 <img src="/pembeli/assets/images/title-shape.svg" alt="">
                             </div>
-                            <p>This is Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolore at
-                                aspernatur eveniet temporibus placeat voluptatum quaerat accusamus possimus
-                                cupiditate, quidem impedit sed libero id perspiciatis esse earum repellat quam.
-                                Dolore modi temporibus quae possimus accusantium, cum corrupti sed deserunt iusto at
-                                sapiente nihil sint iste similique soluta dolor! Quod.</p>
+                            <p>Selamat datang di Warung Uj, tempat di mana cita rasa dan tradisi bertemu.
+                                Kami berdedikasi untuk menyajikan hidangan lezat yang terinspirasi dari
+                                resep autentik, menggunakan bahan-bahan segar dan berkualitas. Dengan
+                                pengalaman bertahun-tahun di industri kuliner, kami berkomitmen untuk memberikan
+                                pelayanan terbaik dan menciptakan pengalaman bersantap yang tak terlupakan bagi setiap
+                                pengunjung
+                                . Bergabunglah dengan kami dan nikmati perjalanan rasa yang istimewa!.</p>
                         </div>
                     </div>
                 </div>
@@ -63,14 +66,14 @@
                     <div class="col-lg-8 m-auto">
                         <div class="about-video">
                             <div class="about-video-img"
-                                style="background-image: url(/pembeli/assets/images/about.jpg);">
+                                style="background-image: url(/pembeli/assets/images/tentang.jpg);">
                             </div>
                             <div class="play-btn-wp">
                                 <a href="/pembeli/assets/images/video.mp4" data-fancybox="video" class="play-btn">
                                     <i class="uil uil-play"></i>
 
                                 </a>
-                                <span>Watch The Recipe</span>
+                                <span>Lihat Vidio Lokasi</span>
                             </div>
                         </div>
                     </div>
@@ -85,8 +88,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="sec-title text-center mb-5">
-                                <p class="sec-sub-title mb-3">Our Menu</p>
-                                <h2 class="h2-title">Wake Up Early, <span>Eat Fresh & Healthy</span></h2>
+                                <p class="sec-sub-title mb-3">Menu Kita</p>
+                                <h2 class="h2-title">Pilihan Makanan & <span>Minuman Segar</span></h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/pembeli/assets/images/title-shape.svg" alt="">
                                 </div>
@@ -101,7 +104,7 @@
                                         <div class="filter-active"></div>
                                         <li class="filter" data-filter="all" onclick="filterProducts('all')">
                                             <img src="/pembeli/assets/images/menu-1.png" alt="All Menu">
-                                            All
+                                            Semua
                                         </li>
                                         @forelse ($kategoris as $kategori)
                                         <li class="filter" data-filter="{{ $kategori->slug }}"
@@ -187,8 +190,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="sec-title text-center mb-5">
-                                <p class="sec-sub-title mb-3">Book Table</p>
-                                <h2 class="h2-title">Opening Table</h2>
+                                <p class="sec-sub-title mb-3">warung uj</p>
+                                <h2 class="h2-title">Jam Buka</h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/pembeli/assets/images/title-shape.svg" alt="">
                                 </div>
@@ -200,20 +203,21 @@
                         <div class="row align-items-center">
                             <div class="col-lg-4">
                                 <div class="table-title text-center">
-                                    <h3>Monday to Thrusday</h3>
+                                    <h3>Setiap Hari</h3>
                                     <p>9:00 am - 22:00 pm</p>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="call-now text-center">
                                     <i class="uil uil-phone"></i>
-                                    <a href="tel:+91-8866998866">+91 - 8866998866</a>
+                                    <a href="tel:+62 823-9201-5547">+62 823-9201-5547</a>
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <div class="table-title text-center">
-                                    <h3>Friday to Sunday</h3>
-                                    <p>11::00 am to 20:00 pm</p>
+                                    <h3>Lokasi</h3>
+                                    <p>Jl. Batin Muajo Lelo </p>
+                                    <p>(Depan kantor camat Baru Pinggir)</p>
                                 </div>
                             </div>
                         </div>
@@ -223,30 +227,30 @@
                         <div class="col-lg-10 m-auto">
                             <div class="book-table-img-slider" id="icon">
                                 <div class="swiper-wrapper">
-                                    <a href="/pembeli/assets/images/bt1.jpg" data-fancybox="table-slider"
+                                    <a href="/pembeli/assets/images/ASLI/abakar.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt1.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt2.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/abakar.jpg)"></a>
+                                    <a href="/pembeli/assets/images//ASLI/achijau.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt2.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt3.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/achijau.jpg)"></a>
+                                    <a href="/pembeli/assets/images//ASLI/acmata.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt3.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt4.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/acmata.jpg)"></a>
+                                    <a href="/pembeli/assets/images//ASLI/agoreng.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt4.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt1.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/agoreng.jpg)"></a>
+                                    <a href="/pembeli/assets/images/ASLI/seblak.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt1.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt2.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/seblak.jpg)"></a>
+                                    <a href="/pembeli/assets/images/ASLI/jbNaga.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt2.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt3.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/jbNaga.jpg)"></a>
+                                    <a href="/pembeli/assets/images/ASLI/igoreng.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt3.jpg)"></a>
-                                    <a href="/pembeli/assets/images/bt4.jpg" data-fancybox="table-slider"
+                                        style="background-image: url(/pembeli/assets/images/ASLI/igoreng.jpg)"></a>
+                                    <a href="/pembeli/assets/images/ASLI/jeruk.jpg" data-fancybox="table-slider"
                                         class="book-table-img back-img swiper-slide"
-                                        style="background-image: url(/pembeli/assets/images/bt4.jpg)"></a>
+                                        style="background-image: url(/pembeli/assets/images/ASLI/jeruk.jpg)"></a>
                                 </div>
 
                                 <div class="swiper-button-wp">
@@ -275,7 +279,7 @@
                         <div class="col-lg-12">
                             <div class="sec-title text-center mb-5">
                                 <p class="sec-sub-title mb-3">faqs</p>
-                                <h2 class="h2-title">Frequently <span>asked questions</span></h2>
+                                <h2 class="h2-title">Pertanyaan <span>yang Sering Diajukan</span></h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/pembeli/assets/images/title-shape.svg" alt="">
                                 </div>
@@ -285,39 +289,36 @@
 
                     <div class="faq-row">
                         <div class="faq-box">
-                            <h4 class="h4-title">What are the login hours?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio.</p>
+                            <h4 class="h4-title">Warung Uj Buka Jam Berapa?</h4>
+                            <p>Warung Uj buka setiap hari dari pukul 08.00 hingga 22.00. Kami siap melayani Anda!.</p>
                         </div>
                         <div class="faq-box">
-                            <h4 class="h4-title">What do i get my refund?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio. Lorem ipsum dolor sit amet.</p>
+                            <h4 class="h4-title">Berapa Lama Makanan Akan Sampai?</h4>
+                            <p>Waktu pengiriman makanan biasanya memakan waktu antara 30 hingga 45 menit, tergantung
+                                pada lokasi Anda dan tingkat keramaian di Warung Uj. Kami akan berusaha secepat mungkin
+                                untuk menyajikan pesanan Anda!.</p>
                         </div>
                         <div class="faq-box">
-                            <h4 class="h4-title">How long it will take food to arrive?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio.</p>
+                            <h4 class="h4-title">Apakah Ada Biaya Pengiriman?</h4>
+                            <p>Biaya pengiriman adalah Rp 1.000 untuk semua lokasi.</p>
                         </div>
                         <div class="faq-box">
-                            <h4 class="h4-title">Does your restaurant has both veg and non veg?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio. Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Voluptates, distinctio?</p>
+                            <h4 class="h4-title">Apa Menu Utama di Warung Uj?</h4>
+                            <p>Kami menyajikan berbagai hidangan lezat berbahan dasar ayam dan ikan, serta minuman segar
+                                untuk melengkapi pengalaman makan Anda.</p>
                         </div>
                         <div class="faq-box">
-                            <h4 class="h4-title">What is cost of food delivery?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio. Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit. Nam officiis ducimus, cum enim repudiandae animi.</p>
+                            <h4 class="h4-title">Apakah Makanan di Warung Uj Halal?</h4>
+                            <p>Semua makanan yang kami sajikan di Warung Uj adalah halal dan dipersiapkan dengan
+                                bahan-bahan berkualitas.</p>
                         </div>
                         <div class="faq-box">
-                            <h4 class="h4-title">Who is eligible for pro membership?</h4>
-                            <p>It is Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus ipsum
-                                vitae fugit laboriosam dolor distinctio. </p>
+                            <h4 class="h4-title">Bagaimana Cara Menghubungi Layanan Pelanggan?</h4>
+                            <p>Anda dapat menghubungi layanan pelanggan kami melalui nomor telepon yang tertera di
+                                website atau melalui media sosial kami. </p>
                         </div>
                     </div>
-
+                    <br><br>
                 </div>
             </div>
 

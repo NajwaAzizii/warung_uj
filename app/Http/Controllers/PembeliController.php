@@ -10,7 +10,7 @@ class PembeliController extends Controller
 {
     public function index()
     {
-        $produks = produk::with('kategori')->orderBy('id', 'DESC')->take(6)->get();
+        $produks = produk::with('kategori')->orderBy('id', 'DESC')->take(9)->get();
         $kategoris = kategori::all();
         return view('pembeli.index', [
             'produks' => $produks,

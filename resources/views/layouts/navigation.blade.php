@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="header-logo">
-                        <a href="{{ route('dashboard') }}">
-                            <img src="/pembeli/logo.png" width="160" height="36" alt="Logo">
+                        <a href="{{ route('pembeli.index') }}">
+                            <img src="/pembeli/logo.png" width="85" height="30" alt="Logo">
                         </a>
                     </div>
                 </div>

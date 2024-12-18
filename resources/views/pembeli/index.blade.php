@@ -128,9 +128,11 @@
                                 data-cat="{{ $produk->kategori->slug }}">
                                 <div class="dish-box text-center">
                                     <a href="{{ route('pembeli.produk.details', $produk->slug) }}">
-                                        <div class="dist-img">
+                                        <div class="dist-img"
+                                            style="display: flex; justify-content: center; align-items: center; height: 250px;">
                                             <img src="{{ Storage::url($produk->foto) }}"
-                                                alt="{{ $produk->nama_produk }}">
+                                                alt="{{ $produk->nama_produk }}"
+                                                style="max-width: 100%; max-height: 100%; object-fit: contain;">
                                         </div>
                                         <div class="dish-title">
                                             <h3 class="h3-title">{{ $produk->nama_produk }}</h3>

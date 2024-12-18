@@ -150,11 +150,16 @@
                                     untuk memberikan pengalaman kuliner terbaik bagi Anda.</p>
                                 <div class="social-icon">
                                     <ul>
-                                        <li><a href="#"><i class="uil uil-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="uil uil-instagram"></i></a></li>
+                                        <li><a href="https://www.facebook.com/share/1B4a3fHLVr/?mibextid=wwXIfr"><i
+                                                    class="uil uil-facebook-f"></i></a></li>
+                                        <li><a href="https://www.instagram.com/rima_hariyani?igsh=MXB0NjFhajAyeGg2dA=="
+                                                target="_blank"><i class="uil uil-instagram"></i></a></li>
                                         <li><a href="https://wa.me/6282392015547" target="_blank"><i
                                                     class="uil uil-whatsapp"></i></a></li>
-                                        <li><a href="#"><i class="uil uil-youtube"></i></a></li>
+                                        <li><a href="https://www.tiktok.com/@rimahariyani_11?_t=ZS-8sJGjOSrSLf&_r=1"
+                                                target="_blank"><i class="fab fa-tiktok"
+                                                    style="color: #FFA500;"></i></a></li>
+
                                     </ul>
                                 </div>
                             </div>

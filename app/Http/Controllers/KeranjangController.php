@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\keranjang;
-use App\Http\Requests\StorekeranjangRequest;
-use App\Http\Requests\UpdatekeranjangRequest;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class KeranjangController extends Controller
 {
@@ -27,10 +31,38 @@ class KeranjangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorekeranjangRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'produk_id' => 'required|exists:produks,id',
+        ]);
+
+        $user = Auth::user();
+        $produkId = $request->input('produk_id');
+
+        // Cek apakah produk sudah ada di keranjang
+        $existingproduk = keranjang::where('user_id', $user->id)->where('produk_id', $produkId)->first();
+        if ($existingproduk) {
+            return redirect()->route('keranjangs.index');
+        }
+
+        DB::beginTransaction();
+        try {
+            $keranjang = keranjang::updateOrCreate([
+                'user_id' => $user->id,
+                'produk_id' => $produkId
+            ]);
+            $keranjang->save();
+            DB::commit();
+
+            return redirect()->route('keranjangs.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error storing Produk: ' . $e->getMessage());
+            throw ValidationException::withMessages(['system_error' => ['system error!' . $e->getMessage()]]);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -51,7 +83,7 @@ class KeranjangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatekeranjangRequest $request, keranjang $keranjang)
+    public function update(Request $request, keranjang $keranjang)
     {
         //
     }

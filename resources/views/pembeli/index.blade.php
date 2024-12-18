@@ -97,20 +97,24 @@
                         <div class="row">
                             <div class="col-lg-12 m-auto">
                                 <div class="menu-tab text-center">
-                                    <ul class="filters">
+                                    <ul class="filters" style="list-style: none; padding: 0;">
                                         <div class="filter-active"></div>
-                                        <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner">
-                                            <img src="/pembeli/assets/images/menu-1.png" alt="">
+                                        <li class="filter" data-filter="all" onclick="filterProducts('all')">
+                                            <img src="/pembeli/assets/images/menu-1.png" alt="All Menu">
                                             All
                                         </li>
-                                        <li class="filter" data-filter=".breakfast">
-                                            <img src="/pembeli/assets/images/menu-2.png" alt="">
-                                            Breakfast
+                                        @forelse ($kategoris as $kategori)
+                                        <li class="filter" data-filter="{{ $kategori->slug }}"
+                                            onclick="filterProducts('{{ $kategori->slug }}')">
+                                            <img src="{{ Storage::url($kategori->icon) }}"
+                                                style="width: 40px; height: 40px;" alt="{{ $kategori->nama }}">
+                                            {{ $kategori->nama }}
                                         </li>
-                                        <li class="filter" data-filter=".lunch">
-                                            <img src="/pembeli/assets/images/menu-3.png" alt="">
-                                            Lunch
+                                        @empty
+                                        <li class="col-12 text-center">
+                                            <p>Belum Ada Kategori</p>
                                         </li>
+                                        @endforelse
                                     </ul>
                                 </div>
                             </div>
@@ -125,7 +129,8 @@
                                 <div class="dish-box text-center">
                                     <a href="{{ route('pembeli.produk.details', $produk->slug) }}">
                                         <div class="dist-img">
-                                            <img src="{{ Storage::url($produk->foto) }}" alt="">
+                                            <img src="{{ Storage::url($produk->foto) }}"
+                                                alt="{{ $produk->nama_produk }}">
                                         </div>
                                         <div class="dish-title">
                                             <h3 class="h3-title">{{ $produk->nama_produk }}</h3>
@@ -133,10 +138,8 @@
                                         <div class="dish-info">
                                             <ul>
                                                 <li>
-                                                    <p class="text-black">Type</p>
-                                                    <!-- Menambahkan kelas untuk warna hitam -->
+                                                    <p class="text-black">Kategori</p>
                                                     <b class="text-black">{{ $produk->kategori->nama }}</b>
-                                                    <!-- Menambahkan kelas untuk warna hitam -->
                                                 </li>
                                             </ul>
                                         </div>
@@ -144,7 +147,7 @@
                                             <ul class="flex justify-between">
                                                 <li>
                                                     <b class="text-black">Rp. {{ number_format($produk->harga, 0, ',',
-                                                        '.') }}</b> <!-- Menambahkan kelas untuk warna hitam -->
+                                                        '.') }}</b>
                                                 </li>
                                                 <li>
                                                     <button class="dish-add-btn">
@@ -163,7 +166,6 @@
                             @endforelse
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

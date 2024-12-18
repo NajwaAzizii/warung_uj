@@ -15,7 +15,19 @@ body {
     top: auto;
     left: auto;
 }
+.item-card1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.item-card1 > div {
+    flex: 1; /* Allow each section to take equal space */
+}
+
+.item-card1 img {
+    margin-right: 10px; /* Space between image and text */
+}
 
 body,
 html {
@@ -1154,7 +1166,6 @@ p {
 .social-icon ul li a:hover i {
     color: #ffffff !important;
 }
-
 
 .faq-row {
     column-count: 3;

@@ -1,15 +1,12 @@
 <?php
 
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaksiProdukController;
 use Illuminate\Support\Facades\Route;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 //halaman utama
 Route::get('/', [PembeliController::class, 'index'])->name('pembeli.index');
@@ -28,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('keranjangs', KeranjangController::class)->middleware('role:pembeli');
 
     Route::resource('transaksi_produk', TransaksiProdukController::class)->middleware('role:pemilik|pembeli');
 

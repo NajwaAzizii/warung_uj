@@ -42,7 +42,7 @@
             /produk
           </p>
         </div>
-        <form action="{{ route('keranjangs.store') }}" method="POST">
+        <form action="{{ route('keranjangs.store', $produk->id) }}" method="POST">
           @csrf
           <input type="hidden" name="produk_id" value="{{ $produk->id }}">
           <button type="submit"

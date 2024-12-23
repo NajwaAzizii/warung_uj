@@ -17,8 +17,13 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $keranjang_Saya = $user->keranjangs()->with('produk')->get();
+        return view('pembeli.keranjang', [
+            'keranjang_saya' => $keranjang_Saya
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -93,6 +98,17 @@ class KeranjangController extends Controller
      */
     public function destroy(keranjang $keranjang)
     {
-        //
+        try {
+            $keranjang->delete();
+            return redirect()->back();
+        } catch (\Exception $e) {
+            //jika eror maka datanya tidak masuk
+            DB::rollBack();
+            Log::error('Error storing category: ' . $e->getMessage());
+            $error = ValidationException::withMessages([
+                'system_error' => ['system error!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
     }
 }

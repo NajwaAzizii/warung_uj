@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('keranjangs', KeranjangController::class)->middleware('role:pembeli');
+    Route::post('keranjang/add/{produkId}', [KeranjangController::class, 'store'])->middleware('role:pembeli')->name('keranjangs.store');
 
     Route::resource('transaksi_produk', TransaksiProdukController::class)->middleware('role:pemilik|pembeli');
 

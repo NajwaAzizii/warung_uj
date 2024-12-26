@@ -19,13 +19,15 @@
 
                 @forelse ($transaksi_produks as $transaksi)
                 <div class="item-card flex flex-row justify-between items-center">
-                    <div class="flex flex-row items-center gap-x-3">
-                        <div>
-                            <p class="text-base text-slate-500">Total Transaksi</p>
-                            <h3 class="text-xl font-bold text-indigo-950">Rp {{ $transaksi->harga_total }}</h3>
+                    <a href="{{ route('transaksi_produk.show', $transaksi->id) }}">
+                        <div class="flex flex-row items-center gap-x-3">
+                            <div>
+                                <p class="text-base text-slate-500">Total Transaksi</p>
+                                <h3 class="text-xl font-bold text-indigo-950">Rp {{ $transaksi->harga_total }}</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div>
+                    </a>
+                    <div class="hidden md:flex flex-col">
                         <p class="text-base text-slate-500">Tanggal</p>
                         <h3 class="text-xl font-bold text-indigo-950">{{ $transaksi->created_at }}</h3>
                     </div>
@@ -39,7 +41,7 @@
                         <p class="text-white font-bold text-sm">PENDING</p>
                     </span>
                     @endif
-                    <div class="flex flex-row items-center gap-x-3">
+                    <div class="hidden md:flex flex-row items-center gap-x-3">
                         <a href="{{ route('transaksi_produk.show', $transaksi->id) }}"
                             class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700">Lihat Detail
                             Transaksi</a>

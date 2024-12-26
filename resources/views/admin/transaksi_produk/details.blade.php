@@ -12,7 +12,7 @@
                     {{ __('Detail Transaksi') }}
                 </h2>
             </div>
-            <div class="item-card flex flex-row justify-between items-center">
+            <div class="item-card flex gap-y-3 flex-col md:flex-row justify-between md:items-center">
                 <div class="flex flex-row items-center gap-x-3">
                     <div>
                         <p class="text-base text-slate-500">
@@ -33,11 +33,11 @@
 
                 </div>
                 @if ($transaksi_produk->status_pembayaran)
-                <span class="py-1 px-3 rounded-full bg-green-500">
+                <span class="py-1 px-3 w-fit rounded-full bg-green-500">
                     <p class="text-white font-bold text-sm">SUKSES</p>
                 </span>
                 @else
-                <span class="py-1 px-3 rounded-full bg-orange-500">
+                <span class="py-1 px-3 w-fit rounded-full bg-orange-500">
                     <p class="text-white font-bold text-sm">PENDING</p>
                 </span>
                 @endif
@@ -47,7 +47,7 @@
             <h3 class="text-xl font-bold text-indigo-950">
                 List Item
             </h3>
-            <div class="grid-cols-4 grid gap-x-10">
+            <div class="grid-cols-1 md:grid-cols-4 grid gap-x-10">
                 <div class="flex flex-col gap-y-5 col-span-2">
                     @forelse ($transaksi_produk->detail_transaksis as $detail)
                     <div class="item-card flex flex-row justify-between items-center">

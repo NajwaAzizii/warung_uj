@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detail_transaksi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\transaksi_produk;
@@ -20,10 +21,12 @@ class TransaksiProdukController extends Controller
         $user = Auth::user();
 
         if ($user->hasRole('pembeli')) {
+            // Menggunakan query builder untuk mengurutkan hasil
             $transaksi_produks = $user->transaksi_produks()->orderBy('id', 'DESC')->get();
         } else {
             $transaksi_produks = transaksi_produk::orderBy('id', 'DESC')->get();
         }
+
         return view('admin.transaksi_produk.index', [
             'transaksi_produks' => $transaksi_produks
         ]);
@@ -42,8 +45,65 @@ class TransaksiProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $validated = $request->validate([
+            'alamat' => 'required|string|max:255',
+            'nomor_hp' => 'required|string', // Ubah ke string jika nomor hp bisa mengandung karakter non-numerik
+            'catatan' => 'required|string|max:65535', // Perbaiki kesalahan pengetikan
+            'bukti_pembayaran' => 'required|image|mimes:png,jpg,jpeg',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $subTotalCents = 0;
+            $deliveryFeeCents = 1000 * 100; // Biaya pengiriman dalam sen
+            $itemKeranjang = $user->keranjangs;
+
+            foreach ($itemKeranjang as $item) {
+                $subTotalCents += $item->produk->harga * 100; // Menghitung subtotal dalam sen
+            }
+
+            $grandTotalCents = $subTotalCents + $deliveryFeeCents;
+
+            // Ubah sen ke rupiah
+            $grandTotal = $grandTotalCents / 100;
+
+            // Simpan data ke dalam database 
+            $validated['user_id'] = $user->id;
+            $validated['harga_total'] = $grandTotal;
+            $validated['status_pembayaran'] = false;
+
+            if ($request->hasfile('bukti_pembayaran')) {
+                $buktiPath = $request->file('bukti_pembayaran')->store('bukti_pembayarans', 'public');
+                $validated['bukti_pembayaran'] = $buktiPath;
+            }
+
+            $transaksiBaru = transaksi_produk::create($validated);
+
+            foreach ($itemKeranjang as $item) {
+                detail_transaksi::create([
+                    'transaksi_produk_id' => $transaksiBaru->id,
+                    'produk_id' => $item->produk_id,
+                    'harga' => $item->produk->harga,
+                ]);
+
+                //jika sudah check out produk maka di dalam keranjang data produk sudah tidak ada jadi dipindahkan data nya ke transaksid detail
+                $item->delete();
+            }
+
+            // Commit transaksi
+            DB::commit();
+
+            return redirect()->route('transaksi_produk.index')->with('success', 'Transaksi berhasil!');
+        } catch (\Exception $e) {
+            // Jika terjadi kesalahan, rollback
+            DB::rollBack();
+            Log::error('Error storing transaksi: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['system_error' => 'Terjadi kesalahan saat menyimpan transaksi.']);
+        }
     }
+
 
     /**
      * Display the specified resource.

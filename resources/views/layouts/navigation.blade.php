@@ -26,13 +26,24 @@
                 </div>
                 <div class="col-lg-10">
                     <div class="main-navigation">
-                        <button class="menu-toggle" @click="open = ! open"><span></span><span></span></button>
+                        <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu food-nav-menu">
                                 <li>
-                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">{{
-                                        __('Dashboard') }}</x-nav-link>
+                                    <x-nav-link :href="route('pembeli.index')"
+                                        :active="request()->routeIs('pembeli.index')">
+                                        {{ __('Dashboard') }}
+                                    </x-nav-link>
                                 </li>
+                                <li>
+                                    <x-nav-link :href="route('transaksi_produk.index')"
+                                        :active="request()->routeIs('transaksi_produk.index')">
+                                        {{ Auth::check() && Auth::user()->hasRole('pemilik') ? __('Pesanan Warung Uj') :
+                                        __('Transaksi Saya') }}
+                                    </x-nav-link>
+                                </li>
+
+
                                 @role('pemilik')
                                 <li>
                                     <x-nav-link :href="route('admin.produk.index')"
@@ -42,15 +53,17 @@
                                 <li>
                                     <x-nav-link :href="route('admin.kategori.index')"
                                         :active="request()->routeIs('admin.kategori.index')">{{ __('Mengelola kategori')
-                                        }}</x-nav-link>
+                                        }}
+                                    </x-nav-link>
                                 </li>
                                 @endrole
-                                <li>
+                                {{-- <li>
                                     <x-nav-link :href="route('transaksi_produk.index')"
-                                        :active="request()->routeIs('transaksi_produk.index,index')">{{
-                                        Auth::user()->hasRole('pemilik') ? __('Pesanan Warung Uj') : __('Transaksi
-                                        Saya') }}</x-nav-link>
-                                </li>
+                                        :active="request()->routeIs('transaksi_produk.index')">
+                                        {{ Auth::check() && Auth::user()->hasRole('pemilik') ? __('Pesanan Warung Uj') :
+                                        __('Transaksi Saya') }}
+                                    </x-nav-link>
+                                </li> --}}
                             </ul>
                         </nav>
 
@@ -66,7 +79,7 @@
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button class="header-btn">
-                                        <div>{{ Auth::user()->name }}</div>
+                                        <div>{{ Auth::check() ? Auth::user()->name : 'Guest' }}</div>
                                         <div class="ms-1">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20">
@@ -88,6 +101,7 @@
                                 </x-slot>
                             </x-dropdown>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -95,44 +109,12 @@
     </header>
     <!-- header ends  -->
 
-    {{-- @role('pembeli')
-    <div class="col-lg-10">
-        <div class="main-navigation">
-            <button class="menu-toggle"><span></span><span></span></button>
-            <nav class="header-menu">
-                <ul class="menu food-nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <form action="#" class="header-search-form for-des">
-                    <input type="search" class="form-input" placeholder="Search Here...">
-                    <button type="submit">
-                        <i class="uil uil-search"></i>
-                    </button>
-                </form>
-                <a href="javascript:void(0)" class="header-btn header-cart">
-                    <i class="uil uil-shopping-bag"></i>
-                    <span class="cart-number">3</span>
-                </a>
-                <a href="javascript:void(0)" class="header-btn">
-                    <i class="uil uil-user-md"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    @endrole --}}
     <main class="content">
         @yield('content')
     </main>
 
     <!-- footer starts  -->
-    @role('pembeli')
+    @if(Auth::check() || Auth::guest())
     <footer class="site-footer" id="contact">
         <div class="top-footer section">
             <div class="sec-wp">
@@ -159,7 +141,6 @@
                                         <li><a href="https://www.tiktok.com/@rimahariyani_11?_t=ZS-8sJGjOSrSLf&_r=1"
                                                 target="_blank"><i class="fab fa-tiktok"
                                                     style="color: #FFA500;"></i></a></li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -167,18 +148,16 @@
                         <div class="col-lg-8">
                             <div class="footer-flex-box">
                                 <div class="footer-table-info">
-                                    <h3 class="h3-title">open hours</h3>
+                                    <h3 class="h3-title">Jam Buka</h3>
                                     <ul>
-                                        <li><i class="uil uil-clock"></i> Setiap Hari : 08.00 - 22.00
-                                        </li>
-
+                                        <li><i class="uil uil-clock"></i> Setiap Hari : 08.00 - 22.00</li>
                                     </ul>
                                 </div>
                                 <div class="footer-menu food-nav-menu">
-                                    <h3 class="h3-title">Links</h3>
+                                    <h3 class="h3-title">Tautan</h3>
                                     <ul class="column-2">
                                         <li><a href="#home" class="footer-active-menu">Beranda</a></li>
-                                        <li><a href="#about">Tantang Kita</a></li>
+                                        <li><a href="#about">Tentang Kami</a></li>
                                         <li><a href="#menu">Menu</a></li>
                                         <li><a href="#gallery">Galeri</a></li>
                                         <li><a href="#contact">Kontak</a></li>
@@ -187,7 +166,7 @@
                                 <div class="footer-menu">
                                     <h3 class="h3-title">Lokasi</h3>
                                     <ul>
-                                        <p>Jl. Batin Muajo Lelo </p>
+                                        <p>Jl. Batin Muajo Lelo</p>
                                         <p>(Depan kantor camat Baru Pinggir)</p>
                                     </ul>
                                 </div>
@@ -203,7 +182,6 @@
                     <div class="col-lg-12 text-center">
                         <div class="copyright-text">
                             <p>Copyright &copy; 2021 <span class="name">TechieCoder.</span> All Rights Reserved.</p>
-
                         </div>
                     </div>
                 </div>

@@ -82,6 +82,12 @@
                                     <i class="uil uil-search"></i>
                                 </button>
                             </form>
+
+                            <a href="{{ route('keranjangs.index', $produk->id) }}" class="header-btn header-cart">
+                                <i class="uil uil-shopping-bag"></i>
+
+                            </a>
+
                             @endrole
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">

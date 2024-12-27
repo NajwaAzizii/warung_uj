@@ -17,6 +17,7 @@ Route::get('/search', [PembeliController::class, 'search'])->name('pembeli.searc
 //detail produk
 Route::get('/details/{produk:slug}', [PembeliController::class, 'details'])->name('pembeli.produk.details');
 Route::get('/kategori/{kategori}', [PembeliController::class, 'kategori'])->name('pembeli.produk.kategori');
+// Route::get('/keranjang/count', [KeranjangController::class, 'cartCount'])->name('keranjang.count');
 
 
 Route::get('/dashboard', function () {

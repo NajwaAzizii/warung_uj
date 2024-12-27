@@ -81,11 +81,11 @@
             class="w-full max-w-[70px] max-h-[70px] object-contain" alt="{{ $keranjang->produk->nama_produk }}">
           <div class="flex flex-wrap items-center justify-between w-full gap-1">
             <div class="flex flex-col gap-1">
-              <h3 class="text-base font-semibold whitespace-nowrap w-[150px] truncate">
-                {{ $keranjang->produk->nama_produk }}
-              </h3>
-              <p class="text-sm text-grey produk-harga" data-harga="{{ $keranjang->produk->harga }}">Rp {{
-                number_format($keranjang->produk->harga, 2, ',', '.') }}</p>
+              <h3 class="text-base font-semibold whitespace-nowrap w-[150px] truncate">{{
+                $keranjang->produk->nama_produk }}</h3>
+              <p class="text-sm text-grey produk-harga" data-harga="{{ $keranjang->produk->harga }}">
+                Rp {{ number_format($keranjang->produk->harga, 2, ',', '.') }}
+              </p>
             </div>
             <form action="{{ route('keranjangs.destroy', $keranjang) }}" method="POST">
               @csrf
@@ -306,18 +306,19 @@
         });
 
         function calculatePrice() {
-            let subTotal = 0;
-            let deliveryFee = 1000;
+    let subTotal = 0;
+    let deliveryFee = 1000;
 
-            document.querySelectorAll('.produk-harga').forEach(item => {
-                subTotal += parseFloat(item.getAttribute('data-harga'));
-            });
+    document.querySelectorAll('.produk-harga').forEach(item => {
+        subTotal += parseFloat(item.getAttribute('data-harga'));
+    });
 
-            document.getElementById('checkout-sub-total').textContent = 'Rp ' + subTotal.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('checkout-delivery-fee').textContent = 'Rp ' + deliveryFee.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('checkout-grand-total').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('checkout-grand-total-price').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-        }
+    document.getElementById('checkout-sub-total').textContent = 'Rp ' + subTotal.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('checkout-delivery-fee').textContent = 'Rp ' + deliveryFee.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('checkout-grand-total').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('checkout-grand-total-price').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+}
+
   </script>
 
 </body>

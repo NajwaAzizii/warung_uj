@@ -41,32 +41,31 @@ class KeranjangController extends Controller
         $request->validate([
             'produk_id' => 'required|exists:produks,id',
         ]);
-
+    
         $user = Auth::user();
         $produkId = $request->input('produk_id');
-
+    
         // Cek apakah produk sudah ada di keranjang
         $existingproduk = keranjang::where('user_id', $user->id)->where('produk_id', $produkId)->first();
+    
         if ($existingproduk) {
-            return redirect()->route('keranjangs.index');
-        }
-
-        DB::beginTransaction();
-        try {
-            $keranjang = keranjang::updateOrCreate([
+            // Jika produk sudah ada, buat entri baru
+            keranjang::create([
                 'user_id' => $user->id,
-                'produk_id' => $produkId
+                'produk_id' => $produkId,
             ]);
-            $keranjang->save();
-            DB::commit();
-
-            return redirect()->route('keranjangs.index');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('Error storing Produk: ' . $e->getMessage());
-            throw ValidationException::withMessages(['system_error' => ['system error!' . $e->getMessage()]]);
+        } else {
+            // Jika produk belum ada, buat entri baru
+            keranjang::create([
+                'user_id' => $user->id,
+                'produk_id' => $produkId,
+            ]);
         }
+    
+        return redirect()->route('keranjangs.index');
     }
+    
+
 
 
     /**

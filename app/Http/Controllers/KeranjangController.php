@@ -19,14 +19,10 @@ class KeranjangController extends Controller
     {
         $user = Auth::user();
         $keranjang_Saya = $user->keranjangs()->with('produk')->get();
-        
-    
         return view('pembeli.keranjang', [
-            'keranjang_saya' => $keranjang_Saya,
-            
+            'keranjang_saya' => $keranjang_Saya
         ]);
     }
-    
 
 
     /**
@@ -72,13 +68,7 @@ class KeranjangController extends Controller
         }
     }
 
-    public function cartCount()
-    {
-        $user = Auth::user();
-        $count = keranjang::where('user_id', $user->id)->count();
-        return $count;
-    }
-    
+
     /**
      * Display the specified resource.
      */

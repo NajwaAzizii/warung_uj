@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\KeranjangController;
-use App\Http\Controllers\PembeliController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\TransaksiProdukController;
-use Illuminate\Support\Facades\Route;
 
 //halaman utama
 Route::get('/', [PembeliController::class, 'index'])->name('pembeli.index');
@@ -18,7 +19,7 @@ Route::get('/search', [PembeliController::class, 'search'])->name('pembeli.searc
 Route::get('/details/{produk:slug}', [PembeliController::class, 'details'])->name('pembeli.produk.details');
 Route::get('/kategori/{kategori}', [PembeliController::class, 'kategori'])->name('pembeli.produk.kategori');
 // Route::get('/keranjang/count', [KeranjangController::class, 'cartCount'])->name('keranjang.count');
-
+Route::resource('detail_transaksi', DetailTransaksiController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

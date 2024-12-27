@@ -24,4 +24,18 @@ class PembeliController extends Controller
             'produk' => $produk,
         ]);
     }
+
+    public function search(Request $request) {
+        $keyword = $request->input('keyword');
+    
+        
+        $produk = produk::where('nama_produk', 'LIKE', '%' . $keyword . '%')->get();
+    
+        return view('pembeli.search', [
+            'produks' => $produk,
+            'keyword' => $keyword,
+        ]);
+    }
+    
+    
 }

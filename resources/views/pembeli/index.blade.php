@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div id="viewport">
     <div id="js-scroll-content">
@@ -19,7 +20,6 @@
                                 <h1 class="h1-title">
                                     Selamat Datang Di
                                     <span>Warung Uj.</span>
-
                                 </h1>
                                 <p>Rasakan cita rasa autentik dari setiap hidangan yang kami sajikan,
                                     dibuat dengan bahan berkualitas dan penuh cinta. Temukan menu spesial
@@ -35,7 +35,6 @@
                                     style="background-image: url(/pembeli/logo.png); width: 600px; height: 500px; background-size: contain; background-repeat: no-repeat;">
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -57,8 +56,7 @@
                                 resep autentik, menggunakan bahan-bahan segar dan berkualitas. Dengan
                                 pengalaman bertahun-tahun di industri kuliner, kami berkomitmen untuk memberikan
                                 pelayanan terbaik dan menciptakan pengalaman bersantap yang tak terlupakan bagi setiap
-                                pengunjung
-                                . Bergabunglah dengan kami dan nikmati perjalanan rasa yang istimewa!.</p>
+                                pengunjung. Bergabunglah dengan kami dan nikmati perjalanan rasa yang istimewa!.</p>
                         </div>
                     </div>
                 </div>
@@ -71,7 +69,6 @@
                             <div class="play-btn-wp">
                                 <a href="/pembeli/assets/images/video.mp4" data-fancybox="video" class="play-btn">
                                     <i class="uil uil-play"></i>
-
                                 </a>
                                 <span>Lihat Vidio Lokasi</span>
                             </div>
@@ -175,8 +172,7 @@
             </div>
         </section>
 
-
-        <section class="book-table section bg-light">
+        <section class="book-table section bg-light" id="contact">
             <div class="book-table-shape">
                 <img src="/pembeli/assets/images/table-leaves-shape.png" alt="">
             </div>
@@ -190,7 +186,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="sec-title text-center mb-5">
-                                <p class="sec-sub-title mb-3">warung uj</p>
+                                <p class="sec-sub-title mb-3">Info Warung</p>
                                 <h2 class="h2-title">Jam Buka</h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/pembeli/assets/images/title-shape.svg" alt="">
@@ -265,11 +261,8 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
         </section>
 
         <section class="faq-sec section-repeat-img" style="background-image: url(/pembeli/assets/images/faq-bg.png);">
@@ -321,5 +314,95 @@
                     <br><br>
                 </div>
             </div>
-
         </section>
+
+        <footer class="site-footer">
+            <div class="top-footer section">
+                <div class="sec-wp">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="footer-info">
+                                    <div class="footer-logo">
+                                        <a href="{{ route('pembeli.index') }}">
+                                            <img src="/pembeli/logo.png" width="85" height="30" alt="Logo">
+                                        </a>
+                                    </div>
+                                    <p>Selamat datang di Warung Uj!</p>
+                                    <p>Nikmati berbagai pilihan makanan ayam dan ikan yang segar dan lezat. Kami
+                                        berkomitmen untuk memberikan pengalaman kuliner terbaik bagi Anda.</p>
+                                    <div class="social-icon">
+                                        <ul>
+                                            <li><a href="https://www.facebook.com/share/1B4a3fHLVr/?mibextid=wwXIfr"><i
+                                                        class="uil uil-facebook-f"></i></a></li>
+                                            <li><a href="https://www.instagram.com/rima_hariyani?igsh=MXB0NjFhajAyeGg2dA=="
+                                                    target="_blank"><i class="uil uil-instagram"></i></a></li>
+                                            <li><a href="https://wa.me/6282392015547" target="_blank"><i
+                                                        class="uil uil-whatsapp"></i></a></li>
+                                            <li><a href="https://www.tiktok.com/@rimahariyani_11?_t=ZS-8sJGjOSrSLf&_r=1"
+                                                    target="_blank"><i class="fab fa-tiktok"
+                                                        style="color: #FFA500;"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="footer-flex-box">
+                                    <div class="footer-table-info">
+                                        <h3 class="h3-title">Jam Buka</h3>
+                                        <ul>
+                                            <li><i class="uil uil-clock"></i> Setiap Hari : 08.00 - 22.00</li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer-menu food-nav-menu">
+                                        <h3 class="h3-title">Tautan</h3>
+                                        <ul class="column-2">
+                                            <li><a href="#home" class="footer-active-menu">Beranda</a></li>
+                                            <li><a href="#about">Tentang Kami</a></li>
+                                            <li><a href="#menu">Menu</a></li>
+                                            <li><a href="#gallery">Galeri</a></li>
+                                            <li><a href="#contact">Kontak</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer-menu">
+                                        <h3 class="h3-title">Lokasi</h3>
+                                        <ul>
+                                            <p>Jl. Batin Muajo Lelo</p>
+                                            <p>(Depan kantor camat Baru Pinggir)</p>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="copyright-text">
+                                <p>Copyright &copy; 2021 <span class="name">TechieCoder.</span> All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="scrolltop"><i class="uil uil-angle-up"></i></button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+@endsection

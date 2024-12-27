@@ -766,7 +766,6 @@ p {
     justify-content: center; /* Memusatkan item */
 }
 
-
 .menu-tab ul li,
 .menu-tab ul .filter-active {
     display: inline-flex;

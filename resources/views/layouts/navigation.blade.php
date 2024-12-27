@@ -29,12 +29,15 @@
                         <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu food-nav-menu">
+
                                 <li>
                                     <x-nav-link :href="route('pembeli.index')"
                                         :active="request()->routeIs('pembeli.index')">
                                         {{ __('Dashboard') }}
                                     </x-nav-link>
                                 </li>
+
+
                                 <li>
                                     <x-nav-link :href="route('transaksi_produk.index')"
                                         :active="request()->routeIs('transaksi_produk.index')">
@@ -69,8 +72,10 @@
 
                         <div class="header-right">
                             @role('pembeli')
-                            <form action="#" class="header-search-form for-des">
-                                <input type="search" class="form-input" placeholder="Search Here...">
+                            <form action="{{ route('pembeli.search') }}" method="GET" id="searchForm"
+                                class="header-search-form for-des">
+                                <input type="search" name="keyword" id="searchProduct" class="form-input"
+                                    placeholder="Cari Produk...">
                                 <button type="submit">
                                     <i class="uil uil-search"></i>
                                 </button>
@@ -113,84 +118,6 @@
         @yield('content')
     </main>
 
-    <!-- footer starts  -->
-    @if(Auth::check() || Auth::guest())
-    <footer class="site-footer" id="contact">
-        <div class="top-footer section">
-            <div class="sec-wp">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="footer-info">
-                                <div class="footer-logo">
-                                    <a href="index.html">
-                                        <img src="/pembeli/logo.png" width="85" height="30" alt="Logo">
-                                    </a>
-                                </div>
-                                <p>Selamat datang di Warung Uj!</p>
-                                <p>Nikmati berbagai pilihan makanan ayam dan ikan yang segar dan lezat. Kami berkomitmen
-                                    untuk memberikan pengalaman kuliner terbaik bagi Anda.</p>
-                                <div class="social-icon">
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/share/1B4a3fHLVr/?mibextid=wwXIfr"><i
-                                                    class="uil uil-facebook-f"></i></a></li>
-                                        <li><a href="https://www.instagram.com/rima_hariyani?igsh=MXB0NjFhajAyeGg2dA=="
-                                                target="_blank"><i class="uil uil-instagram"></i></a></li>
-                                        <li><a href="https://wa.me/6282392015547" target="_blank"><i
-                                                    class="uil uil-whatsapp"></i></a></li>
-                                        <li><a href="https://www.tiktok.com/@rimahariyani_11?_t=ZS-8sJGjOSrSLf&_r=1"
-                                                target="_blank"><i class="fab fa-tiktok"
-                                                    style="color: #FFA500;"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="footer-flex-box">
-                                <div class="footer-table-info">
-                                    <h3 class="h3-title">Jam Buka</h3>
-                                    <ul>
-                                        <li><i class="uil uil-clock"></i> Setiap Hari : 08.00 - 22.00</li>
-                                    </ul>
-                                </div>
-                                <div class="footer-menu food-nav-menu">
-                                    <h3 class="h3-title">Tautan</h3>
-                                    <ul class="column-2">
-                                        <li><a href="#home" class="footer-active-menu">Beranda</a></li>
-                                        <li><a href="#about">Tentang Kami</a></li>
-                                        <li><a href="#menu">Menu</a></li>
-                                        <li><a href="#gallery">Galeri</a></li>
-                                        <li><a href="#contact">Kontak</a></li>
-                                    </ul>
-                                </div>
-                                <div class="footer-menu">
-                                    <h3 class="h3-title">Lokasi</h3>
-                                    <ul>
-                                        <p>Jl. Batin Muajo Lelo</p>
-                                        <p>(Depan kantor camat Baru Pinggir)</p>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="copyright-text">
-                            <p>Copyright &copy; 2021 <span class="name">TechieCoder.</span> All Rights Reserved.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="scrolltop"><i class="uil uil-angle-up"></i></button>
-            </div>
-        </div>
-    </footer>
-    @endrole
-
     <!-- Scripts -->
     <script src="/pembeli/assets/js/jquery-3.5.1.min.js"></script>
     <script src="/pembeli/assets/js/bootstrap.min.js"></script>
@@ -205,7 +132,4 @@
     <script src="/pembeli/assets/js/ScrollToPlugin.min.js"></script>
     <script src="/pembeli/assets/js/smooth-scroll.js"></script>
     <script src="/pembeli/main.js"></script>
-
 </body>
-
-</html>

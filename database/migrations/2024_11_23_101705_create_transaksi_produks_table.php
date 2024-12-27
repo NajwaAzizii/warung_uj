@@ -17,8 +17,8 @@ return new class extends Migration
             $table->boolean('status_pembayaran');
             $table->string('alamat');
             $table->string('nomor_hp');
-            $table->text('catatan');
-            $table->string('bukti_pembayaran');
+            $table->text('catatan')->nullable();
+            $table->string('bukti_pembayaran')->nullable();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

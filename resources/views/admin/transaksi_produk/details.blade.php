@@ -118,9 +118,12 @@
 
             @role('pemilik')
             @if ($transaksi_produk->status_pembayaran)
-            <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
+            <a href="https://wa.me/{{ '62' . ltrim($transaksi_produk->nomor_hp, '0') }}"
+                class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700 text-center inline-block">
                 WhatsApp Customer
-            </button>
+            </a>
+
+
             @else
             <form method="POST" action="{{ route('transaksi_produk.update', $transaksi_produk) }}">
                 @csrf
@@ -133,9 +136,10 @@
             @endrole
 
             @role('pembeli')
-            <button href="#" class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700">
+            <a href="https://wa.me/6282392015547"
+                class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700 text-center inline-block">
                 Hubungi Admin
-            </button>
+            </a>
             @endrole
         </div>
     </div>

@@ -93,6 +93,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="menu-tab-wp">
                         <div class="row">
                             <div class="col-lg-12 m-auto">
@@ -168,6 +170,9 @@
                             @endforelse
                         </div>
                     </div>
+
+
+
                 </div>
             </div>
         </section>
@@ -394,6 +399,17 @@
 </div>
 
 <script>
+    function filterProducts(category) {
+        const dishes = document.querySelectorAll('.dish-box-wp');
+        dishes.forEach(dish => {
+            if (category === 'all' || dish.classList.contains(category)) {
+                dish.style.display = 'block'; 
+            } else {
+                dish.style.display = 'none'; 
+            }
+        });
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {

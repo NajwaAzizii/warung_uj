@@ -25,6 +25,18 @@ class PembeliController extends Controller
         ]);
     }
 
+    public function kategori(Kategori $kategori) {
+        
+        $produks = Produk::where('kategori_id', $kategori->id)->with('kategori')->get();
+        
+        return view('pembeli.index', [
+            'produks' => $produks,
+            'kategori' => $kategori,
+            'kategoris' => Kategori::all(), 
+        ]);
+    }
+    
+    
     public function search(Request $request) {
         $keyword = $request->input('keyword');
     

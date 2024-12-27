@@ -210,10 +210,17 @@
                             </div>
                             <div class="col-lg-4">
                                 <div class="call-now text-center">
-                                    <i class="uil uil-phone"></i>
-                                    <a href="tel:+62 823-9201-5547">+62 823-9201-5547</a>
+                                    <a href="https://wa.me/6282392015547" target="_blank" rel="noopener noreferrer">
+                                        <i class="uil uil-phone" aria-hidden="true"></i>
+                                    </a>
+                                    <div>
+                                        <a href="https://wa.me/6282392015547" target="_blank"
+                                            rel="noopener noreferrer">+62 823-9201-5547</a>
+                                    </div>
                                 </div>
                             </div>
+
+
                             <div class="col-lg-4">
                                 <div class="table-title text-center">
                                     <h3>Lokasi</h3>

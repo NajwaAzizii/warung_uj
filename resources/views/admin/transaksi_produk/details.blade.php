@@ -120,7 +120,7 @@
             @if ($transaksi_produk->status_pembayaran)
             <a href="https://wa.me/{{ '62' . ltrim($transaksi_produk->nomor_hp, '0') }}"
                 class="w-fit font-bold py-3 px-5 rounded-full text-white bg-indigo-700 text-center inline-block">
-                WhatsApp Customer
+                WhatsApp Pembeli
             </a>
 
 

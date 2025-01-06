@@ -135,7 +135,7 @@ class ProdukController extends Controller
         } catch (\Exception $e) {
             //jika eror maka datanya tidak masuk
             DB::rollBack();
-            Log::error('Error storing category: ' . $e->getMessage());
+            Log::error('Error storing produk: ' . $e->getMessage());
             $error = ValidationException::withMessages([
                 'system_error' => ['system error!' . $e->getMessage()],
             ]);

@@ -32,9 +32,11 @@
                         <a href="{{ route('admin.produk.edit', $produk) }}"
                             class="py-2 px-4 rounded-full bg-indigo-600 text-white font-bold">Edit</a>
                         <form method="POST" action="{{ route('admin.produk.destroy', $produk) }}">
+                            @csrf
                             @method('DELETE')
                             <button class="py-2 px-4 rounded-full bg-red-600 text-white font-bold">Delete</button>
                         </form>
+
                     </div>
                 </div>
                 @empty

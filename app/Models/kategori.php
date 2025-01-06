@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class kategori extends Model
 {
@@ -14,4 +15,8 @@ class kategori extends Model
     protected $guarded = [
         'id',
     ];
+    public function produk(): HasMany
+    {
+        return $this->hasMany(Produk::class); // Pastikan Produk adalah model yang benar
+    }
 }

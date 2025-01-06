@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 
+
 class KategoriController extends Controller
 {
     /**
@@ -131,7 +132,15 @@ class KategoriController extends Controller
     public function destroy(kategori $kategori)
     {
         try {
+            $kategori = \App\Models\kategori::findOrFail($kategori->id);
+            if ($kategori->produk->count() >= 1) {
+                // Menghapus produk terkait
+                $kategori->produk()->delete();
+            }
+    
+            // Menghapus kategori
             $kategori->delete();
+    
             return redirect()->back();
         } catch (\Exception $e) {
             //jika eror maka datanya tidak masuk

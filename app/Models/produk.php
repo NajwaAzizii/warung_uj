@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class produk extends Model
 {
@@ -23,5 +24,15 @@ class produk extends Model
     public function kategori(): BelongsTo
     {
         return $this->belongsTo(kategori::class);
+    }
+
+    public function keranjangs()
+    {
+        return $this->hasMany(keranjang::class);
+    }
+
+    public function detail_transaksis(): HasMany
+    {
+        return $this->hasMany(detail_transaksi::class);
     }
 }

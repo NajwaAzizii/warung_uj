@@ -25,7 +25,7 @@
                     <div class="flex flex-row items-center gap-x-3">
                         <a href="{{ route('admin.kategori.edit', $kategori) }}"
                             class="font-bold py-3 px-5 rounded-full text-white bg-indigo-700"
-                            style="margin: 0; width: 100px; display: flex; align-items: center; justify-content: center;">Edit</a>
+                            style="margin: 0; width: 100px; display: flex; align-items: center; justify-content: center;">Ubah</a>
                         <form method="POST" action="{{ route('admin.kategori.destroy', $kategori) }}" style="margin: 0;"
                             onsubmit="return showModal(event);">
                             @csrf

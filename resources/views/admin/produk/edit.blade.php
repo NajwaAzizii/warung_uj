@@ -65,7 +65,7 @@
                     <div class="flex items-center justify-end mt-4">
 
                         <x-primary-button class="ms-4">
-                            {{ __('Update Produk') }}
+                            {{ __('Ubah Produk') }}
                         </x-primary-button>
                     </div>
                 </form>

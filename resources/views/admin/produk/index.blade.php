@@ -30,13 +30,14 @@
                     </div>
                     <div class="flex flex-row items-center gap-x-3">
                         <a href="{{ route('admin.produk.edit', $produk) }}"
-                            class="py-2 px-4 rounded-full bg-indigo-600 text-white font-bold">Edit</a>
-                        <form method="POST" action="{{ route('admin.produk.destroy', $produk) }}">
+                            class="py-2 px-4 rounded-full bg-indigo-600 text-white font-bold">Ubah</a>
+                        <form method="POST" action="{{ route('admin.produk.destroy', $produk) }}"
+                            style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button class="py-2 px-4 rounded-full bg-red-600 text-white font-bold">Delete</button>
+                            <button type="button" class="py-2 px-4 rounded-full bg-red-600 text-white font-bold"
+                                onclick="showModal(event, this.form);">Hapus</button>
                         </form>
-
                     </div>
                 </div>
                 @empty
@@ -46,4 +47,103 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Konfirmasi -->
+<div id="deleteModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2><i class="fas fa-exclamation-triangle" style="color: red;"></i> Peringatan!</h2>
+        <p>Apakah Anda yakin ingin menghapus produk ini?</p>
+        <div class="modal-buttons">
+            <button class="confirm-btn" onclick="confirmDelete()">Ya, Hapus</button>
+            <button class="cancel-btn" onclick="closeModal()">Batal</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* CSS untuk modal */
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 250px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-buttons {
+        margin-top: 20px;
+    }
+
+    .confirm-btn,
+    .cancel-btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px;
+    }
+
+    .confirm-btn {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .cancel-btn {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .confirm-btn:hover,
+    .cancel-btn:hover {
+        opacity: 0.8;
+    }
+</style>
+
+<script>
+    let formToSubmit;  
+  
+    function showModal(event, form) {  
+        event.preventDefault(); // Mencegah form dari disubmit  
+        formToSubmit = form; // Simpan form yang akan disubmit  
+        document.getElementById('deleteModal').style.display = 'flex'; // Menampilkan modal  
+    }  
+  
+    function closeModal() {  
+        document.getElementById('deleteModal').style.display = 'none'; // Menyembunyikan modal  
+    }  
+  
+    function confirmDelete() {  
+        formToSubmit.submit(); // Menyubmit form jika pengguna mengonfirmasi  
+    }  
+</script>
 @endsection

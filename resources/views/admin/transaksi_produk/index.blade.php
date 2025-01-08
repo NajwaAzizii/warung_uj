@@ -29,7 +29,9 @@
                     </a>
                     <div class="hidden md:flex flex-col">
                         <p class="text-base text-slate-500">Tanggal</p>
-                        <h3 class="text-xl font-bold text-indigo-950">{{ $transaksi->created_at }}</h3>
+                        <h3 class="text-xl font-bold text-indigo-950">
+                            {{ \Carbon\Carbon::parse($transaksi->created_at)->subMonth()->format('d F Y') }}
+                        </h3>
                     </div>
 
                     @if ($transaksi->status_pembayaran)
@@ -38,7 +40,7 @@
                     </span>
                     @else
                     <span class="py-1 px-3 rounded-full bg-orange-500">
-                        <p class="text-white font-bold text-sm">PENDING</p>
+                        <p class="text-white font-bold text-sm">MENUNGGU</p>
                     </span>
                     @endif
                     <div class="hidden md:flex flex-row items-center gap-x-3">

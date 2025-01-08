@@ -45,7 +45,7 @@
             <hr class="my-1">
 
             <h3 class="text-xl font-bold text-indigo-950">
-                List Item
+                List Produk
             </h3>
             <div class="grid-cols-1 md:grid-cols-4 grid gap-x-10">
                 <div class="flex flex-col gap-y-5 col-span-2">

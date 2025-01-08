@@ -81,11 +81,24 @@
             class="w-full max-w-[70px] max-h-[70px] object-contain" alt="{{ $keranjang->produk->nama_produk }}">
           <div class="flex flex-wrap items-center justify-between w-full gap-1">
             <div class="flex flex-col gap-1">
-              <h3 class="text-base font-semibold whitespace-nowrap w-[150px] truncate">{{
-                $keranjang->produk->nama_produk }}</h3>
+              <h3 class="text-base font-semibold whitespace-nowrap w-[150px] truncate">
+                {{ $keranjang->produk->nama_produk }}</h3>
               <p class="text-sm text-grey produk-harga" data-harga="{{ $keranjang->produk->harga }}">
                 Rp {{ number_format($keranjang->produk->harga, 2, ',', '.') }}
               </p>
+            </div>
+            <div class="flex items-center">
+              <div style="background-color: #f8d7da; border-radius: 9999px; padding: 4px; margin-right: 8px;">
+                <button type="button" class="bg-red-500" onclick="decrementQuantity(this)">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+              <span class="quantity-display mx-2">1</span>
+              <div style="background-color: #d4edda; border-radius: 9999px; padding: 4px; margin-left: 8px;">
+                <button type="button" class="bg-green-500" onclick="incrementQuantity(this)">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
             </div>
             <form action="{{ route('keranjangs.destroy', $keranjang) }}" method="POST">
               @csrf
@@ -100,6 +113,7 @@
         <p>Belum ada transaksi tersedia</p>
         @endforelse
       </div>
+
     </section>
 
     <br>
@@ -171,21 +185,21 @@
       @csrf
       <div class="flex flex-col gap-5">
         <div class="flex flex-col gap-2.5">
-          <label for="address" class="text-base font-semibold">Alamat</label>
+          <label for="address__" class="text-base font-semibold">Alamat</label>
           <input type="text" name="alamat" id="address__" class="form-input"
             style="background-image: url('{{ asset('assets/svgs/ic-location.svg') }}');"
             placeholder="Ketikkan alamat di sini">
         </div>
 
         <div class="flex flex-col gap-2.5">
-          <label for="phonenumber" class="text-base font-semibold">Nomor Telepon</label>
+          <label for="phonenumber__" class="text-base font-semibold">Nomor Telepon</label>
           <input type="number" name="nomor_hp" id="phonenumber__" class="form-input"
             style="background-image: url('{{ asset('assets/svgs/ic-phone.svg') }}');"
             placeholder="Ketikkan nomor telepon di sini">
         </div>
 
         <div class="flex flex-col gap-2.5">
-          <label for="notes" class="text-base font-semibold">Catatan Tambahan</label>
+          <label for="notes__" class="text-base font-semibold">Catatan Tambahan</label>
           <span class="relative">
             <img src="{{ asset('assets/svgs/ic-edit.svg') }}" class="absolute size-5 top-4 left-4" alt="Catatan">
             <textarea name="catatan" id="notes__" class="form-input !rounded-2xl w-full min-h-[150px]"
@@ -194,12 +208,13 @@
         </div>
 
         <div class="flex flex-col gap-2.5" id="paymentProofContainer" style="display: none;">
-          <label for="proof_of_payment" class="text-base font-semibold">Bukti Pembayaran</label>
+          <label for="proof_of_payment__" class="text-base font-semibold">Bukti Pembayaran</label>
           <input type="file" name="bukti_pembayaran" id="proof_of_payment__" class="form-input"
             style="background-image: url('{{ asset('assets/svgs/ic-folder-add.svg') }}');">
         </div>
       </div>
     </form>
+
 
     <br><br><br><br>
 
@@ -208,7 +223,9 @@
       <section class="flex items-center justify-between gap-5">
         <div>
           <p class="text-sm text-grey mb-0.5">Total Keseluruhan</p>
-          <p class="text-lg min-[350px]:text-2xl font-bold text-white" id="checkout-grand-total-price"></p>
+          <p class="text-lg min-[350px]:text-2xl font-bold text-white" id="checkout-grand-total-price">Rp
+            0,00</p>
+
         </div>
         <button type="submit" form="deliveryForm"
           class="inline-flex items-center justify-center px-5 py-3 text-base font-bold text-white rounded-full w-max bg-primary whitespace-nowrap">
@@ -216,6 +233,9 @@
         </button>
       </section>
     </div>
+  </div>
+
+
   </div>
 
   <div class="popup" id="errorPopup">
@@ -241,84 +261,124 @@
   <script src="{{ asset('scripts/global.js') }}"></script>
   <script>
     function validateForm() {
-        const address = document.getElementById('address__').value;
-        const phoneNumber = document.getElementById('phonenumber__').value;
-        const notes = document.getElementById('notes__').value;
-        const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
-        const paymentProof = document.getElementById('proof_of_payment__');
+            const address = document.getElementById('address__').value;
+            const phoneNumber = document.getElementById('phonenumber__').value;
+            const notes = document.getElementById('notes__').value;
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked');
+            const paymentProof = document.getElementById('proof_of_payment__');
 
-        console.log("Address:", address);
-        console.log("Phone Number:", phoneNumber);
-        console.log("Notes:", notes);
-        console.log("Payment Method:", paymentMethod);
-        console.log("Payment Proof:", paymentProof);
+            console.log("Address:", address);
+            console.log("Phone Number:", phoneNumber);
+            console.log("Notes:", notes);
+            console.log("Payment Method:", paymentMethod);
+            console.log("Payment Proof:", paymentProof);
 
-        // Validasi alamat (tidak boleh mengandung angka)
-        const addressHasNumber = /\d/.test(address);
-        if (addressHasNumber) {
-            showPopup("Alamat tidak boleh mengandung angka.");
-            return false; // Mencegah pengiriman form
+            // Validasi alamat (tidak boleh mengandung angka)  
+            const addressHasNumber = /\d/.test(address);
+            if (addressHasNumber) {
+                showPopup("Alamat tidak boleh mengandung angka.");
+                return false; // Mencegah pengiriman form  
+            }
+
+            // Validasi nomor telepon (wajib diisi)  
+            if (!phoneNumber) {
+                showPopup("Nomor telepon wajib diisi.");
+                return false; // Mencegah pengiriman form  
+            }
+
+            // Validasi bukti pembayaran jika metode pembayaran adalah Transfer  
+            if (paymentMethod && paymentMethod.id === 'manualMethod' && !paymentProof.files.length) {
+                showPopup("Bukti pembayaran wajib diisi jika memilih Transfer.");
+                return false; // Mencegah pengiriman form  
+            }
+
+            // Jika semua validasi lulus, tampilkan popup sukses  
+            return true; // Mengizinkan pengiriman form  
         }
 
-        // Validasi nomor telepon (wajib diisi)
-        if (!phoneNumber) {
-            showPopup("Nomor telepon wajib diisi.");
-            return false; // Mencegah pengiriman form
+        function showPopup(message) {
+            document.getElementById('errorMessage').textContent = message;
+            document.getElementById('errorPopup').style.display = 'flex'; // Tampilkan popup  
         }
 
-        // Validasi bukti pembayaran jika metode pembayaran adalah Transfer
-        if (paymentMethod && paymentMethod.id === 'manualMethod' && !paymentProof.files.length) {
-            showPopup("Bukti pembayaran wajib diisi jika memilih Transfer.");
-            return false; // Mencegah pengiriman form
+        function closePopup() {
+            document.getElementById('errorPopup').style.display = 'none'; // Sembunyikan popup  
         }
 
-        // Jika semua validasi lulus, tampilkan popup sukses
-        return true; // Mengizinkan pengiriman form
-    }
-
-    function showPopup(message) {
-        document.getElementById('errorMessage').textContent = message;
-        document.getElementById('errorPopup').style.display = 'flex'; // Tampilkan popup
-    }
-
-    function closePopup() {
-        document.getElementById('errorPopup').style.display = 'none'; // Sembunyikan popup
-    }
-
-    function closeSuccessPopup() {
-        document.getElementById('successPopup').style.display = 'none'; // Sembunyikan popup sukses
-    }
+        function closeSuccessPopup() {
+            document.getElementById('successPopup').style.display = 'none'; // Sembunyikan popup sukses  
+        }
 
         function togglePaymentProof() {
             const manualMethod = document.getElementById('manualMethod');
             const paymentProofContainer = document.getElementById('paymentProofContainer');
 
             if (manualMethod.checked) {
-                paymentProofContainer.style.display = 'block'; // Tampilkan input bukti pembayaran
+                paymentProofContainer.style.display = 'block'; // Tampilkan input bukti pembayaran  
             } else {
-                paymentProofContainer.style.display = 'none'; // Sembunyikan input bukti pembayaran
+                paymentProofContainer.style.display = 'none'; // Sembunyikan input bukti pembayaran  
             }
         }
 
-        // Jalankan
-        document.addEventListener('DOMContentLoaded', function () {
+        // Jalankan  
+        document.addEventListener('DOMContentLoaded', function() {
             calculatePrice();
         });
 
+
+        function incrementQuantity(button) {
+            const quantityDisplay = button.closest('.flex').querySelector('.quantity-display');
+            let quantity = parseInt(quantityDisplay.textContent);
+            quantityDisplay.textContent = quantity + 1;
+            calculatePrice(); // Jika ada fungsi untuk menghitung harga berdasarkan kuantitas
+        }
+
+        function decrementQuantity(button) {
+            const quantityDisplay = button.closest('.flex').querySelector('.quantity-display');
+            let quantity = parseInt(quantityDisplay.textContent);
+            if (quantity > 1) {
+                quantityDisplay.textContent = quantity - 1;
+                calculatePrice(); // Jika ada fungsi untuk menghitung harga berdasarkan kuantitas
+            }
+        }
+
+
         function calculatePrice() {
-    let subTotal = 0;
-    let deliveryFee = 1000;
+            let subTotal = 0;
+            let deliveryFee = 1000;
 
-    document.querySelectorAll('.produk-harga').forEach(item => {
-        subTotal += parseFloat(item.getAttribute('data-harga'));
-    });
+            document.querySelectorAll('.produk-harga').forEach(item => {
+                const price = parseFloat(item.getAttribute('data-harga'));
+                const quantityElement = item.closest('.flex-wrap').querySelector('.quantity-display');
+                if (quantityElement) {
+                    const quantity = parseInt(quantityElement.textContent);
+                    subTotal += price * quantity;
+                }
+            });
 
-    document.getElementById('checkout-sub-total').textContent = 'Rp ' + subTotal.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('checkout-delivery-fee').textContent = 'Rp ' + deliveryFee.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('checkout-grand-total').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('checkout-grand-total-price').textContent = 'Rp ' + (subTotal + deliveryFee).toLocaleString('id', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-}
+            // Update subtotal  
+            document.getElementById('checkout-sub-total').textContent = 'Rp ' + subTotal.toLocaleString('id', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
 
+            // Update delivery fee  
+            document.getElementById('checkout-delivery-fee').textContent = 'Rp ' + deliveryFee.toLocaleString('id', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            // Calculate and update grand total  
+            const grandTotal = subTotal + deliveryFee;
+            document.getElementById('checkout-grand-total').textContent = 'Rp ' + grandTotal.toLocaleString('id', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+            document.getElementById('checkout-grand-total-price').textContent = 'Rp ' + grandTotal.toLocaleString('id', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
   </script>
 
 </body>

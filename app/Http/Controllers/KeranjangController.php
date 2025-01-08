@@ -36,7 +36,7 @@ class KeranjangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $request->validate([
             'produk_id' => 'required|exists:produks,id',
@@ -49,11 +49,7 @@ class KeranjangController extends Controller
         $existingproduk = keranjang::where('user_id', $user->id)->where('produk_id', $produkId)->first();
     
         if ($existingproduk) {
-            // Jika produk sudah ada, buat entri baru
-            keranjang::create([
-                'user_id' => $user->id,
-                'produk_id' => $produkId,
-            ]);
+            // Jika produk sudah ada, tidak perlu membuat entri baru
         } else {
             // Jika produk belum ada, buat entri baru
             keranjang::create([
@@ -64,6 +60,7 @@ class KeranjangController extends Controller
     
         return redirect()->route('keranjangs.index');
     }
+    
     
 
 

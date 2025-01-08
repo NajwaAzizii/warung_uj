@@ -28,7 +28,8 @@
                         Tanggal
                     </p>
                     <h3 class="text-xl font-bold text-indigo-950">
-                        {{ $transaksi_produk->created_at }}
+
+                        {{ \Carbon\Carbon::parse($transaksi_produk->created_at)->subMonth()->format('d F Y H:i:s') }}
                     </h3>
 
                 </div>
@@ -38,7 +39,7 @@
                 </span>
                 @else
                 <span class="py-1 px-3 w-fit rounded-full bg-orange-500">
-                    <p class="text-white font-bold text-sm">PENDING</p>
+                    <p class="text-white font-bold text-sm">MENUNGGU</p>
                 </span>
                 @endif
             </div>

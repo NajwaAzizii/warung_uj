@@ -12,7 +12,7 @@ class UpdateBuktiPembayaranInTransaksiProduksTable extends Migration
     public function up(): void
     {
         Schema::table('transaksi_produks', function (Blueprint $table) {
-            $table->string('bukti_pembayaran')->nullable()->change(); 
+            $table->string('bukti_pembayaran')->nullable()->change();
             $table->string('catatan')->nullable()->change(); // Mengubah kolom menjadi nullable
         });
     }
@@ -24,7 +24,7 @@ class UpdateBuktiPembayaranInTransaksiProduksTable extends Migration
     {
         Schema::table('transaksi_produks', function (Blueprint $table) {
             $table->string('bukti_pembayaran')->nullable(false)->change(); // Mengembalikan ke tidak nullable
-            $table->string('catatan')->nullable(false)->change(); 
+            $table->string('catatan')->nullable(false)->change();
         });
     }
 }

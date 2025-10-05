@@ -8,6 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Testing\Fluent\Concerns\Has;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\transaksi_produk;
+use App\Models\keranjang;
+
+/**
+ * App\Models\User
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Keranjang[] $keranjangs
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Transaksi_Produk[] $transaksi_produks
+ */
+
 
 class User extends Authenticatable
 {

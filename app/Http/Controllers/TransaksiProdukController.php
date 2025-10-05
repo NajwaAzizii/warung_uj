@@ -54,7 +54,7 @@ class TransaksiProdukController extends Controller
         'catatan' => 'nullable|string|max:65535', // Catatan boleh kosong
         'bukti_pembayaran' => 'nullable|image|mimes:png,jpg,jpeg',
     ]);
-    
+
     DB::beginTransaction();
     try {
         $subTotalCents = 0;
@@ -70,7 +70,7 @@ class TransaksiProdukController extends Controller
         // Ubah sen ke rupiah
         $grandTotal = $grandTotalCents / 100;
 
-        // Simpan data ke dalam database 
+        // Simpan data ke dalam database
         $validated['user_id'] = $user->id;
         $validated['harga_total'] = $grandTotal;
         $validated['status_pembayaran'] = false;
@@ -108,7 +108,7 @@ class TransaksiProdukController extends Controller
     }
 }
 
-    
+
 
 
     /**

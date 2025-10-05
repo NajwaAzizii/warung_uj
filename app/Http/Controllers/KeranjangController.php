@@ -24,7 +24,6 @@ class KeranjangController extends Controller
         ]);
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -36,18 +35,18 @@ class KeranjangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $request->validate([
             'produk_id' => 'required|exists:produks,id',
         ]);
-    
+
         $user = Auth::user();
         $produkId = $request->input('produk_id');
-    
+
         // Cek apakah produk sudah ada di keranjang
         $existingproduk = keranjang::where('user_id', $user->id)->where('produk_id', $produkId)->first();
-    
+
         if ($existingproduk) {
             // Jika produk sudah ada, tidak perlu membuat entri baru
         } else {
@@ -57,11 +56,11 @@ class KeranjangController extends Controller
                 'produk_id' => $produkId,
             ]);
         }
-    
+
         return redirect()->route('keranjangs.index');
     }
-    
-    
+
+
 
 
 
